@@ -33,7 +33,7 @@ islock(rwanda).
 islock(sanmarino).
 islock(serbia).
 islock(slovakia).
-islock(south sudan).
+islock(southsudan).
 islock(swaziland).
 islock(switzerland).
 islock(tajikistan).

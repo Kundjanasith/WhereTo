@@ -1,5 +1,5 @@
 :- module(hassea,[]).
-hassea(albania).
+hassea(alb).
 hassea(algeria).
 hassea(angola).
 hassea(argentina).

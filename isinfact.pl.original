@@ -174,4 +174,4 @@ isin(PRY,southamerica).
 isin(PER,southamerica).
 isin(SUR,southamerica).
 isin(URY,southamerica).
-isin(VEN,southamerica).
+isin(venezuela,southamerica).

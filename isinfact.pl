@@ -140,7 +140,7 @@ isin(portugal,europe).
 isin(moldova,europe).
 isin(romania,europe).
 isin(russian,europe).
-isin(san marino,europe).
+isin(sanmarino,europe).
 isin(sark,europe).
 isin(serbia,europe).
 isin(slovakia,europe).
@@ -154,7 +154,7 @@ isin(unitedkingdom,europe).
 isin(belize,northamerica).
 isin(bermuda,northamerica).
 isin(canada,northamerica).
-isin(costa rica,northamerica).
+isin(costarica,northamerica).
 isin(elsalvador,northamerica).
 isin(greenland,northamerica).
 isin(guatemala,northamerica).

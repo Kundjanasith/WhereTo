@@ -9,7 +9,6 @@ hassea(bel).
 hassea(blz).
 hassea(ben).
 hassea(bmu).
-hassea(bol).
 hassea(bih).
 hassea(bra).
 hassea(brn).

@@ -5,3 +5,6 @@
 :- use_module(nomountain,[]).
 :- use_module(weather,[]).
 :- use_module(country,[]).
+:- use_module(continent,[]).
+:- use_module(climate,[]).
+:- use_module(activity,[]).

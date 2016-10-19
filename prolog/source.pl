@@ -4,3 +4,4 @@
 :- use_module(hasmountain,[]).
 :- use_module(nomountain,[]).
 :- use_module(weather,[]).
+:- use_module(country,[]).

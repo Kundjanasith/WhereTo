@@ -8,3 +8,4 @@
 :- use_module(continent,[]).
 :- use_module(climate,[]).
 :- use_module(activity,[]).
+:- use_module(actrule,[]).

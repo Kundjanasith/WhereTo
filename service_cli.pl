@@ -16,7 +16,7 @@ main :-
     Types = [activity, month, country],
     Info = [activity, month, country, continent],
     
-    nl, write('Which suggestion do you need? '),
+    nl, write('Which kind of suggestion do you need? '),
 
     write(Types), nl,
     read(Suggestion),

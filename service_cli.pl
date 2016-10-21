@@ -2,15 +2,17 @@
 
 :- use_module(knowledge_base, []).
 
-:- initialization(main).
+:- initialization(init).
 
-main :-
+init :-
     nl,
     write('==============================='), nl,
     write('WhereTo v0.1'), nl,
-    write('\'Resolve your destination...\''), nl,
+    write('We resolve your destination...'), nl,
     write('==============================='), nl,
+    main.
 
+main :-
     Types = [activity, month, country],
     Info = [activity, month, country, continent],
     
@@ -38,8 +40,10 @@ main :-
 %   write('QueryInfo: '), write(QueryInfo), nl,
     
     write('Suggested: '), nl,
-    query_kb(QueryInfo),    
-    format('\t* ~w\n', [Suggested]), fail; true.
+    query_kb(QueryInfo),
+%   (var(Suggested) -> (write('\t* None *'), nl)),    
+    format('\t* ~w\n', [Suggested]), fail; true,
+    nl, main.
 
 query_kb(Infos) :-
     nth1(1, Infos, Activity),

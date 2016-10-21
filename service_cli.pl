@@ -5,33 +5,49 @@
 :- initialization(main).
 
 main :-
-    write('------------------------------'), nl,
+    nl,
+    write('==============================='), nl,
     write('WhereTo v0.1'), nl,
     write('\'Resolve your destination...\''), nl,
-    write('------------------------------'), nl,
+    write('==============================='), nl,
 
-    Types = [activity, month, continent, country],
-    Info = [activity, month, continent, country],
+    Types = [activity, month, country],
+    Info = [activity, month, country, continent],
     
     nl, write('Which suggestion do you need? '),
 
     write(Types), nl,
     read(Suggestion),
 
-    split(Types, Suggestion, Left, Right),
+    ((Suggestion == country, append(Types, [continent], FilteredTypes)); (Suggestion \= country, FilteredTypes = Types)),
+%   write('FilteredTypes: '), write(FilteredTypes), nl,
+
+    split(FilteredTypes, Suggestion, Left, Right),
     append(Left, Right, NewTypes),
 
-%   replace(Suggestion, Suggested, Info, NewInfo),
+%   replace(Suggestion, [Suggested], Info, NewInfo),
 
 %   write(NewInfo), nl,
-%   write(NewTypes), nl,
+%   write('NewTypes: '), write(NewTypes), nl,
 %   write(Suggested), nl,
     
     receive(NewTypes, Info, PopulatedInfo),
-    write('PopulatedInfo: '), write(PopulatedInfo), nl,
+%   write('PopulatedInfo: '), write(PopulatedInfo), nl,
 
     replace(Suggestion, Suggested, PopulatedInfo, QueryInfo),
-    write('QueryInfo: '), write(QueryInfo), nl.
+%   write('QueryInfo: '), write(QueryInfo), nl,
+    
+    write('Suggested: '), nl,
+    query_kb(QueryInfo),    
+    format('\t* ~w\n', [Suggested]), fail; true.
+
+query_kb(Infos) :-
+    nth1(1, Infos, Activity),
+    nth1(2, Infos, Month),
+    nth1(3, Infos, Country),
+    nth1(4, Infos, Continent),
+    ((Continent == continent, QueryContinent = _); (Continent \= continent, QueryContinent = Continent)),
+    rules_activity:activity(Activity, Month, QueryContinent, Country).
 
 receive([], Infos, Return) :- Return = Infos.
 receive([Type|Types], Infos, Return) :-
@@ -40,8 +56,6 @@ receive([Type|Types], Infos, Return) :-
     replace(Type, ReadIn, Infos, PopulatedInfo),
     receive(Types, PopulatedInfo, Return).
 
-%    receive([activity, month, continent, country], []).
-
 % List split.
 split(List, Pivot, Left, Right) :- append(Left, [Pivot|Right], List).
 
@@ -49,11 +63,3 @@ split(List, Pivot, Left, Right) :- append(Left, [Pivot|Right], List).
 replace(_, _, [], []).
 replace(O, R, [O|T], [R|T2]) :- replace(O, R, T, T2).
 replace(O, R, [H|T], [H|T2]) :- H \= O, replace(O, R, T, T2).
-
-% receive([[I|J]|Types]) :-
-%     length(J) > 0,
-%     write('Do you have the information about '),
-%     write(I),
-%     write('? (Y/n)'), nl,
-%     read(Suggestion),
-%     (Suggestion = Y, ).
